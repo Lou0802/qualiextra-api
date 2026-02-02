@@ -1,0 +1,73 @@
+SPRINT 0
+
+Ce projet est une API Back-End développée pour le test technique Qualiextra et il est construit en Node.js + Express.
+Dans le Sprint 0, l’objectif principal était de mettre en place la structure initiale du projet. 
+
+Ce qui a été fait dans le Sprint 0
+	•	Initialisation du projet Node.js
+               npm init -y
+	•	Création du serveur Express fonctionnel
+                 app.js/server.js
+	•	Organisation des dossiers (config, models, routes)
+	•	Installation et configuration de Nodemon pour le dev
+	•	Route de test /health pour vérifier le serveur
+
+Structure du projet
+ .
+ ├── .env           # variables d’environnement
+ ├── .gitignore     # fichiers à ignorer par Git
+ ├── package.json   # dépendances et scripts
+ ├──
+src/
+ ├── app.js        # configuration Express 
+ ├── server.js     # point d’entrée du serveur
+ ├── config/       # configuration de la DB
+ ├── models/       # modèles Sequelize
+ └── routes/       # routes API
+
+ Dépendances installées
+ npm install express dotenv
+ npm i
+ npm install -D nodemon
+
+Le serveur démarre sur le port défini dans .env
+
+Scripts utiles après modification de package.json :
+Pour démarrer le serveur en mode développement avec rechargement automatique :
+    npm run dev
+Pour démarrer le serveur en mode production :
+    npm start
+
+	
+
+SPRINT 1
+
+Dans le Print 1 l objectif était de connecter le projet à PostgreSQL et mettre en place Sequelize avec un modèle User pour préparer l’authentification.
+
+Ce qui a été fait dans le Sprint 1
+    •	Installer les dépendences Sequelize et pg
+	•	Connexion à la base de donnéesPostgreSQL 
+              psql -U postgres
+	•	Création du rôle PostgreSQL avec mot de passe 
+	•	Création de la base de données 
+	•	Configuration Sequelize 
+    •	Configuration des variables d’environnement pour la DB
+    •	Tester la connexion à la DB depuis l’application
+    •	Création du modèle User avec gestion du rôle (USER / ADMIN) 
+	•	Test de connexion et synchronisation de la table Users 
+
+Dépendances installées
+npm install sequelize pg
+
+Base de données PostgreSQL
+CREATE ROLE nom_user WITH LOGIN PASSWORD 'mon_mot_de_passe';
+CREATE DATABASE nom_db OWNER nom_user;
+GRANT ALL PRIVILEGES ON DATABASE qualiextra_db TO nom_user;
+
+
+SPRINT 2
+
+
+
+
+
