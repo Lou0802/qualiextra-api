@@ -7,24 +7,33 @@ export const User = sequelize.define("User", {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
     },
-    firstname: DataTypes.STRING,
-    lastname: DataTypes.STRING,
+    firstname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    lastname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-    passsword: DataTypes.STRING,
-        role: {
-            type: DataTypes.ENUM,
-            values: ["admin", "user"],
-            defaultValue: "user",
-        },
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    role: {
+        type: DataTypes.ENUM("admin", "user"),
+        defaultValue: "user",
+    },
     emailVerified: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-emailVerificationToken: DataTypes.STRING,
-    type: DataTypes.STRING,
-    allowNull:true,
-},
+    emailVerificationToken: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
 });

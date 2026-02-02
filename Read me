@@ -42,7 +42,7 @@ Pour démarrer le serveur en mode production :
 
 SPRINT 1
 
-Dans le Print 1 l objectif était de connecter le projet à PostgreSQL et mettre en place Sequelize avec un modèle User pour préparer l’authentification.
+Dans le Sprint 1 l’objectif était de connecter le projet à PostgreSQL et mettre en place Sequelize avec un modèle User pour préparer l’authentification.
 
 Ce qui a été fait dans le Sprint 1
     •	Installer les dépendences Sequelize et pg
@@ -65,9 +65,24 @@ CREATE DATABASE nom_db OWNER nom_user;
 GRANT ALL PRIVILEGES ON DATABASE qualiextra_db TO nom_user;
 
 
-SPRINT 2
+Sprint 2
 
+L’objectif du Sprint 2 était de mettre en place la création sécurisée d’un compte utilisateur via la route pour l’inscription.
+            POST /api/auth/register
 
+Ce qui a été fait dans le Sprint 2
 
+	•	Validation des données (prénom, nom, email et mot de passe obligatoires)
+	•	Vérification de l’email
+	•	refuse l’inscription si l’email existe déjà
+	•	Hash du mot de passe
+    •	Token de vérification
+	•	génération d’un token unique pour la vérification email
+		emailVerified = false par défaut
+	
+Dépendances utilisées
+npm install argon2 
+	
 
-
+    
+    
