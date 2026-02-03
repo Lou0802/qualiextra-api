@@ -84,5 +84,30 @@ Dépendances utilisées
 npm install argon2 
 	
 
+  Sprint 3 – Authentification & Routes protégées
+
+L’objectif du sprint 3 est de mettre en place l’authentification des utilisateurs à l’aide de JWT (JSON Web Token) et de sécuriser l’accès à certaines routes de l’API.
+
+Ce qui a été fait dans le Sprint 3
+
+    •	Création de la route 
+         POST /api/auth/login
+    •	Vérification des informations d’identification (email et mot de passe)
+    •	Utilisation d’argon2 pour vérifier le mot de passe hashé
+    •	Si les informations sont valides, génération d’un token JWT
+    •	Création d’un middleware pour vérifier le token JWT dans les requêtes         entrantes
+    •	Le middleware protège les routes sensibles en vérifiant la validité du token
+    •	Si le token est valide, l’utilisateur est autorisé à accéder à la ressource demandée
+    •	Restriction d’accès basée sur la vérification de l’email
+    •  Une route privée /private est accessible uniquement aux utilisateurs authentifiés
+       GET /api/private
+    •	Restriction d’accès basée sur la vérification de l’email
+    •	Seuls les utilisateurs avec un email vérifié peuvent accéder à certaines routes protégées
+
+Dépendances utilisées
+npm install jsonwebtoken
+
+
+
     
     
