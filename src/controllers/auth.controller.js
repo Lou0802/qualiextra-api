@@ -53,6 +53,24 @@ export const register = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+export const verifyEmail = async (req, res) => {
+  try {
+    const { token } = req.query;
+  const user = await User.findOne({
+    where: { emailVerificationToken: token }
+  });
+  if (!user) {
+    return res.status(400).json({ message: "Token de vérification invalide" });
+  }
+  user.emailVerified = true;
+  user.emailVerificationToken = null; // Invalide le token après vérification
+  await user.save();
+  res.json({ message: "Email vérifié avec succès" });
+  } catch (error) {
+    console.error("Erreur dans verifyEmail:", error);
+    res.status(500).json({ message: "Erreur serveur" });
+  }
+};
 
 export const login = async (req, res) => {
   try {
@@ -83,7 +101,8 @@ export const login = async (req, res) => {
 
     // Création d'un token JWT
     const token = jwt.sign(
-      { id: user.id, role: user.role },          
+      { id: user.id, role: user.role }, 
+      process.env.JWT_SECRET,         
       { expiresIn: process.env.JWT_EXPIRES_IN || '3h' } 
     );
 
