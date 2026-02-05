@@ -1,7 +1,7 @@
 import express from 'express';
 import { isAuthenticated } from '../middlewares/auth.middleware.js';
 import { isAdmin } from '../middlewares/role.middleware.js';
-import { getAllUsers,  getUserById, updateUser, getMyProfile, deleteUser } from '../controllers/user.controller.js';
+import { getAllUsers,  getUserById, updateUser, getMyProfile, updateMyProfile, deleteUser } from '../controllers/user.controller.js';
 
 const router = express.Router();
 
@@ -13,5 +13,6 @@ router.delete('/users/:id', isAuthenticated, isAdmin, deleteUser);
 
 // User route
 router.get('/me', isAuthenticated, getMyProfile);
+router.put('/me', isAuthenticated, updateMyProfile);
 
 export default router;

@@ -4,6 +4,9 @@ import argon2 from 'argon2';
 // On importe crypto pour générer un token de vérification par email
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
+import { isTempEmail } from '../utils/tempEmail.js';
+import { sendVerificationEmail } from '../utils/email.js';
+
 
 /**
  * Fonction d'inscription d'un utilisateur
@@ -20,6 +23,14 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: "Tous les champs sont obligatoires" });
     }
 
+    // Blocage email temporaire
+    if (isTempEmail(email)) {
+      return res.status(400).json({
+        message: "Les adresses email temporaires sont interdites"
+      });
+    }
+
+
     // Vérification si l'utilisateur existe déjà
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
@@ -33,7 +44,7 @@ export const register = async (req, res) => {
     const emailVerificationToken = crypto.randomBytes(32).toString('hex');
 
     // Création du nouvel utilisateur dans la base de données
-    await User.create({
+    const user = await User.create({
       firstname,
       lastname,
       email,
@@ -41,6 +52,8 @@ export const register = async (req, res) => {
       emailVerificationToken,
       emailVerified: false, // par défaut, l'email n'est pas vérifié
     });
+
+    await sendVerificationEmail(user.email, emailVerificationToken);
 
     // Réponse de succès
     return res.status(201).json({

@@ -257,3 +257,13 @@ GET http://localhost:3000/api/users
   "message": "Accès interdit"
 }
 
+
+
+A ce sprint a ete ajouté la validation de l’email à l’inscription. Un token de vérification est généré et envoyé par email à l’utilisateur. L’utilisateur doit cliquer sur le lien de vérification pour activer son compte. Seuls les utilisateurs avec un email vérifié peuvent se connecter et accéder aux ressources protégées.
+
+Dépendances utilisées
+npm install nodemailer
+
+service d’envoi d’email
+Pour l’envoi d’emails, j’ai utilisé Nodemailer avec un compte Mailtrap pour les tests. Mailtrap permet de capturer les emails envoyés depuis l’application sans les envoyer à de vrais destinataires, ce qui est idéal pour le développement et les tests.
+
