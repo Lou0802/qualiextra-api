@@ -267,3 +267,16 @@ npm install nodemailer
 service d’envoi d’email
 Pour l’envoi d’emails, j’ai utilisé Nodemailer avec un compte Mailtrap pour les tests. Mailtrap permet de capturer les emails envoyés depuis l’application sans les envoyer à de vrais destinataires, ce qui est idéal pour le développement et les tests.
 
+
+SPRINT 6 DEPLOYEMENT DOCKER ET RENDER
+
+Objectif du Sprint 6 était de rendre le projet déployable en production en utilisant Docker pour containeriser l’application et Render pour l’héberger, tout en assurant la sécurité des variables sensibles.
+
+Ce qui a été fait dans le Sprint 6
+
+  •	Création d’un Dockerfile pour containeriser l’application
+  •	Création d’un compte Render et configuration du projet
+  •	Déploiement de l’application sur Render
+  •	Gestion des variables d’environnement de manière sécurisée sur Render
+  
+
