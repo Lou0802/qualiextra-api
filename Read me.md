@@ -1,3 +1,4 @@
+BACK
 SPRINT 0 INITIALISATION PROJET
 
 Ce projet est une API Back-End développée pour le test technique Qualiextra et il est construit en Node.js + Express.
@@ -280,3 +281,14 @@ Ce qui a été fait dans le Sprint 6
   •	Gestion des variables d’environnement de manière sécurisée sur Render
   
 
+FRONT
+PRESENTATION
+
+Ce projet correspond à l’intégration Front-End de la page “Missions” demandée dans le test technique.
+
+Technologies utilisées:
+
+• HTML5
+• CSS3
+• JavaScript (responsive + media queries)
+• Architecture prete à etre connectée à une API REST Node.js

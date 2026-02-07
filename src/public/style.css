@@ -1,0 +1,419 @@
+/* ================= VARIABLES GLOBALES ================= */
+:root {
+    --green: #798C73;     /* Couleur principale de l’app */
+    --border: #D6D6D9;    /* Couleur des bordures */
+    --gray: #F0F0F1;      /* Fond gris clair */
+    --dark: #100030;      /* Couleur texte principale */
+}
+
+/* Reset CSS + police globale */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: sans-serif; 
+}
+
+/* Layout principal : sidebar + contenu */
+.app-layout { 
+    display: flex; 
+    height: 100vh; 
+}
+
+
+/* ================= SIDEBAR DESKTOP ================= */
+.sidebar {
+    width: 200px;
+    height: 100%;
+    border-right: 1px solid var(--border);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: fixed;
+    background: #fff;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+/* Header sidebar : avatar + nom entreprise */
+.sidebar-header { 
+    padding: 0 15px; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    margin-bottom: 15px; 
+}
+
+/* Carré avatar avec initiale entreprise */
+.avatar-enterprise { 
+    width: 22px; 
+    height: 22px; 
+    background: var(--green); 
+    border-radius: 4px;
+
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+
+    color: white; 
+    font-size: 12px; 
+    font-weight: bold;
+}
+
+/* Nom entreprise */
+.enterprise-name { 
+    font-size: 14px; 
+    font-weight: 500; 
+}
+
+/* Zone bouton nouvelle mission */
+.cta-area { 
+    padding: 0 15px 15px; 
+    border-bottom: 1px solid var(--border); 
+}
+
+/* Bouton principal */
+.btn-primary { 
+    width: 100%; 
+    height: 38px; 
+    background: var(--green); 
+    color: #fff; 
+    border: none; 
+    border-radius: 2px; 
+    cursor: pointer; 
+}
+
+/* Liens navigation sidebar */
+.nav-item { 
+    display: block; 
+    padding: 10px 15px; 
+    text-decoration: none; 
+    color: var(--dark); 
+    font-size: 14px; 
+}
+
+/* Élément actif */
+.nav-item.active { 
+    background: var(--gray); 
+    font-weight: bold; 
+}
+
+
+/* ================= CONTENU PRINCIPAL ================= */
+.main-content { 
+    flex: 1; 
+    margin-left: 200px; /* laisse la place à la sidebar fixe */
+}
+
+.container { 
+    padding: 0px 30px; 
+}
+
+/* Header de page */
+.page-head { padding-top: 5px; }
+
+/* Titre Missions */
+.title { 
+    font-size: 20px; 
+    margin-bottom: 10px; 
+}
+
+/* Onglets de filtrage */
+.tabs { 
+    display: flex; 
+    gap: 20px; 
+    border-bottom: 1px solid var(--border); 
+    margin-bottom: 15px; 
+    overflow-x: auto; 
+}
+
+.tab { 
+    padding-bottom: 8px; 
+    font-size: 14px; 
+    color: #64616F; 
+    cursor: pointer; 
+    white-space: nowrap; 
+}
+
+/* Onglet actif */
+.tab.active { 
+    color: var(--green); 
+    border-bottom: 2px solid var(--green); 
+}
+
+
+/* ================= TOOLBAR ================= */
+.toolbar { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 15px; 
+    align-items: center; 
+}
+
+.search-group { flex: 1; }
+
+/* Champ recherche */
+.search-group input { 
+    width: 100%; 
+    height: 38px; 
+    border: 1px solid var(--border); 
+    border-radius: 4px; 
+    padding: 0 10px; 
+}
+
+/* Boutons actions */
+.actions { display: flex; gap: 8px; }
+
+.btn-tool { 
+    height: 38px; 
+    padding: 0 12px; 
+    background: #fff; 
+    border: 1px solid var(--border); 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+
+
+/* ================= TABLEAU DESKTOP ================= */
+.desktop-view { 
+    display: block; 
+    border: 1px solid var(--border); 
+    border-radius: 2px; 
+}
+
+.data-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+
+/* Header tableau */
+.data-table th { 
+    background: #F9F9FB; 
+    text-align: left; 
+    padding: 10px 15px; 
+    font-size: 12px; 
+    border-bottom: 1px solid var(--border); 
+    font-weight: 400; 
+    color: #64616F; 
+}
+
+/* Cellules tableau */
+.data-table td { 
+    padding: 12px 15px; 
+    border-bottom: 1px solid var(--gray); 
+    font-size: 14px; 
+}
+
+/* Badge */
+.badge { 
+    background: var(--gray); 
+    padding: 2px 5px; 
+    border-radius: 4px; 
+    font-size: 11px; 
+}
+
+
+/* ================= ÉLÉMENTS CACHÉS PAR DÉFAUT ================= */
+.mobile-header, 
+.popup-overlay, 
+.cards-view, 
+.btn-select-1279 { 
+    display: none; 
+}
+
+
+/* ================= RESPONSIVE ≤ 831px (mobile) ================= */
+@media (max-width: 831px) {
+
+    /* Cache sidebar */
+    .sidebar { display: none; }
+
+    /* Contenu prend toute la largeur */
+    .main-content { margin-left: 0; }
+
+    /* Header mobile */
+    .mobile-header { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 0 15px; 
+        height: 50px; 
+        border-bottom: 1px solid #000; 
+        background: #fff; 
+    }
+
+    /* Bouton burger */
+    .burger-btn { 
+        background: none; 
+        border: none; 
+        font-size: 24px; 
+        cursor: pointer; 
+    }
+
+    /* Overlay popup */
+    .popup-overlay { 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: rgba(0,0,0,0.4); 
+        z-index: 2000; 
+        display: none; 
+    }
+
+    .popup-overlay.active { display: block; }
+
+    /* Contenu popup */
+    .popup-content { 
+        position: absolute; 
+        top: 0; 
+        right: 0; 
+        width: 320px; 
+        height: 100%; 
+        background: #fff; 
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1); 
+    }
+
+    .popup-header { 
+        padding: 15px 20px; 
+        border-bottom: 1px solid #000; 
+        display: flex; 
+        justify-content: space-between; 
+        font-weight: bold; 
+    }
+
+    .close-btn { 
+        background: none; 
+        border: none; 
+        font-size: 18px; 
+        cursor: pointer; 
+    }
+
+    .popup-body { padding: 20px; }
+
+    .btn-new-popup { 
+        width: 100%; 
+        padding: 12px; 
+        background: var(--green); 
+        color: #fff; 
+        border: none; 
+        border-radius: 4px; 
+        margin-bottom: 25px; 
+        cursor: pointer; 
+    }
+
+    .p-item { 
+        display: flex; 
+        justify-content: space-between; 
+        padding: 12px 0; 
+        text-decoration: none; 
+        color: var(--dark); 
+        font-size: 15px; 
+    }
+
+    .chevron { font-weight: bold; }
+
+    .p-spacer { height: 60px; }
+}
+
+
+/* ================= RESPONSIVE ≤ 1279px (tablette + mobile) ================= */
+@media (max-width: 1279px) {
+
+    /* Cache tableau desktop */
+    .desktop-view { display: none; }
+
+    /* Affiche cartes mobile */
+    .cards-view { display: block; }
+
+    .container { padding: 0 10px; }
+
+    /* Toolbar compacte */
+    .toolbar { gap: 5px; }
+
+    /* Champ recherche avec icône */
+    .search-group input { 
+        height: 36px; 
+        font-size: 13px;
+        padding-left: 30px;
+
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') 
+        no-repeat 8px center;
+    }
+
+    /* Boutons icônes seulement */
+    .btn-tool { 
+        width: 36px; 
+        height: 36px; 
+        padding: 0; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+    }
+
+    .btn-tool span { display: none; }
+
+    .btn-tool.btn-select-1279 { display: flex; }
+
+    /* Cartes missions */
+    .stack { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 10px; 
+    }
+
+    .card { 
+        border: 1px solid var(--border); 
+        border-radius: 4px; 
+        width: 100%; 
+    }
+
+    .card-inner { 
+        display: flex; 
+        justify-content: space-between; 
+        padding: 12px; 
+        align-items: flex-start; 
+    }
+
+    .card h3 { 
+        font-size: 14px; 
+        font-weight: bold; 
+        line-height: 1.2; 
+    }
+
+    .meta { 
+        font-size: 12px; 
+        color: #64616F; 
+        margin-top: 3px; 
+    }
+
+    .price-side strong { 
+        font-size: 14px; 
+        color: #000; 
+    }
+
+    .card-footer { 
+        border-top: 1px solid var(--gray); 
+        padding: 10px; 
+        text-align: center; 
+        color: var(--green); 
+        font-weight: bold; 
+        font-size: 13px; 
+    }
+}
+
+
+/* ================= TRÈS PETITS ÉCRANS ≤ 350px ================= */
+@media (max-width: 350px) {
+
+    /* Cache le placeholder pour gagner de la place */
+    .search-group input::placeholder { 
+        color: transparent; 
+    }
+
+    /* Popup prend toute la largeur */
+    .popup-content { width: 100%; }
+}

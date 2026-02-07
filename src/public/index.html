@@ -1,0 +1,208 @@
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Permet le responsive sur mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de la page dans l’onglet navigateur -->
+    <title>Qualiextra - Missions</title>
+
+    <!-- Lien vers la feuille de style principale -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Layout principal de l’application (sidebar + contenu) -->
+    <div class="app-layout">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+
+            <!-- Partie haute de la sidebar -->
+            <div class="sidebar-top">
+
+                <!-- Header avec avatar entreprise + nom -->
+                <div class="sidebar-header">
+                    <div class="avatar-enterprise">C</div>
+                    <span class="enterprise-name">Ciel Bleu</span>
+                </div>
+
+                <!-- Bouton création mission -->
+                <div class="cta-area">
+                    <button class="btn-primary">+ Nouvelle mission</button>
+                </div>
+
+                <!-- Navigation principale -->
+                <nav class="nav">
+                    <a href="#" class="nav-item">Tableau de bord</a>
+                    <a href="#" class="nav-item">Planning</a>
+                    <a href="#" class="nav-item active">Missions</a>
+                    <a href="#" class="nav-item">Factures</a>
+                </nav>
+            </div>
+
+            <!-- Partie basse de la sidebar -->
+            <div class="sidebar-bottom">
+                <a href="#" class="nav-item">Paramètres</a>
+                <a href="#" class="nav-item">Aide</a>
+                <a href="#" class="nav-item">Déconnexion</a>
+            </div>
+        </aside>
+
+
+        <!-- ================= MENU MOBILE POPUP ================= -->
+        <div id="popupMenu" class="popup-overlay">
+            <div class="popup-content">
+
+                <!-- Header du menu mobile -->
+                <div class="popup-header">
+                    <span>Menu</span>
+
+                    <!-- Bouton fermeture popup -->
+                    <button class="close-btn" onclick="toggleMenu()">✕</button>
+                </div>
+
+                <!-- Corps du menu mobile -->
+                <div class="popup-body">
+
+                    <!-- Bouton nouvelle mission -->
+                    <button class="btn-new-popup">+ Nouvelle mission</button>
+
+                    <!-- Navigation mobile -->
+                    <nav class="popup-nav">
+                        <a href="#" class="p-item">Tableau de bord <span class="chevron">></span></a>
+                        <a href="#" class="p-item">Planning <span class="chevron">></span></a>
+                        <a href="#" class="p-item">Missions <span class="chevron">></span></a>
+                        <a href="#" class="p-item">Factures <span class="chevron">></span></a>
+
+                        <!-- Espace visuel -->
+                        <div class="p-spacer"></div>
+
+                        <a href="#" class="p-item">Paramètres <span class="chevron">></span></a>
+                        <a href="#" class="p-item">Aide <span class="chevron">></span></a>
+                        <a href="#" class="p-item">Déconnexion</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= CONTENU PRINCIPAL ================= -->
+        <main class="main-content">
+
+            <!-- Header mobile avec bouton burger -->
+            <header class="mobile-header">
+                <div class="m-left">Missions <small>7</small></div>
+
+                <!-- Ouvre le menu popup -->
+                <button class="burger-btn" onclick="toggleMenu()">☰</button>
+            </header>
+
+
+            <!-- Conteneur global de la page -->
+            <div class="container">
+
+                <!-- ================= HEADER DE PAGE ================= -->
+                <header class="page-head">
+
+                    <!-- Titre principal -->
+                    <h1 class="title">Missions <sup>7</sup></h1>
+
+                    <!-- Onglets de filtrage des missions -->
+                    <nav class="tabs">
+                        <span class="tab active">À pourvoir</span>
+                        <span class="tab">En cours</span>
+                        <span class="tab">À venir</span>
+                        <span class="tab">Terminées</span>
+                        <span class="tab">Annulées</span>
+                    </nav>
+
+                    <!-- Barre d’outils : recherche + actions -->
+                    <div class="toolbar">
+
+                        <!-- Champ de recherche -->
+                        <div class="search-group">
+                            <input type="text" placeholder="Rechercher par métier, date JJ/MM/AAAA ou candidat">
+                        </div>
+
+                        <!-- Boutons actions -->
+                        <div class="actions">
+                            <button class="btn-tool">📅 <span>Dates</span></button>
+                            <button class="btn-tool btn-select-1279">︾ <span>Sélectionner</span></button>
+                        </div>
+                    </div>
+                </header>
+
+
+                <!-- ================= TABLEAU DESKTOP ================= -->
+                <section class="desktop-view">
+                    <table class="data-table">
+
+                        <!-- En-tête du tableau -->
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"> table header</th>
+                                <th>table header ↑</th>
+                                <th>table header</th>
+                                <th>table header</th>
+                                <th>table header</th>
+                            </tr>
+                        </thead>
+
+                        <!-- Corps du tableau -->
+                        <tbody>
+                            <tr><td><input type="checkbox"> text</td><td>Text <span class="badge">Badge</span></td><td>text</td><td>👤👤👤</td><td>text</td></tr>
+                            <tr><td><input type="checkbox"> text</td><td>Text <span class="badge">Badge</span></td><td>text</td><td>👤👤👤</td><td>text</td></tr>
+                            <tr><td><input type="checkbox"> text</td><td>text</td><td>text</td><td></td><td>text</td></tr>
+                            <tr><td><input type="checkbox"> text</td><td>text</td><td>text</td><td></td><td>text</td></tr>
+                            <tr><td><input type="checkbox"> text</td><td>text</td><td>text</td><td>👤</td><td>text</td></tr>
+                            <tr><td><input type="checkbox"> text</td><td>text ⓘ</td><td>text</td><td></td><td>text</td></tr>
+                            <tr><td><input type="checkbox"> text</td><td>text</td><td>text</td><td>👤👤👤</td><td>text</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+
+                <!-- ================= CARTES MOBILE ================= -->
+                <section class="cards-view">
+                    <div class="stack">
+
+                        <!-- Carte mission -->
+                        <article class="card">
+                            <div class="card-inner">
+
+                                <!-- Infos mission -->
+                                <div>
+                                    <h3>Réceptionniste de jour</h3>
+                                    <p class="meta">Date <span class="badge">Badge</span></p>
+                                    <p class="meta">Horaires</p>
+                                </div>
+
+                                <!-- Prix affiché à droite -->
+                                <div class="price-side">
+                                    <strong>200,00€</strong>
+                                </div>
+                            </div>
+
+                            <!-- Footer carte -->
+                            <div class="card-footer">Voir les candidatures</div>
+                        </article>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+
+    <!-- ================= SCRIPT JS ================= -->
+    <script>
+        // Ouvre / ferme le menu mobile popup
+        function toggleMenu() {
+            document.getElementById('popupMenu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
