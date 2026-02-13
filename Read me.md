@@ -292,3 +292,8 @@ Technologies utilisées:
 • CSS3
 • JavaScript (responsive + media queries)
 • Architecture prete à etre connectée à une API REST Node.js
+
+
+SWAGGER
+Je mets à jour package.json pour ajouter swagger-jsdoc et swagger-ui-express, puis j'ai installé les paquets et j'ai démarré le serveur localement pour tester.
+

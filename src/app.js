@@ -4,6 +4,8 @@ import privateRoute from "./routes/private.route.js";
 import usersRoute from "./routes/user.route.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger.js';
 
 const app = express(); 
 
@@ -21,6 +23,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/auth", router);
 app.use("/api", privateRoute);
 app.use("/api", usersRoute);
+/* Swagger UI */
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /* route de test */
 app.get("/health", (req, res) => {
