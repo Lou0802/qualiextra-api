@@ -7,7 +7,7 @@ const router =express.Router();
  * @openapi
  * /api/auth/register:
  *   post:
- *     summary: Enregistrer un nouvel utilisateur
+ *     summary: "Enregistrer un nouvel utilisateur"
  *     tags:
  *       - Auth
  *     requestBody:
@@ -26,7 +26,7 @@ router.post ('/register', register);
  * @openapi
  * /api/auth/login:
  *   post:
- *     summary: Connexion utilisateur
+ *     summary: "Connexion utilisateur"
  *     tags:
  *       - Auth
  *     requestBody:
@@ -52,7 +52,7 @@ router.post ('/login', login);
  * @openapi
  * /api/auth/verify-email:
  *   get:
- *     summary: Vérifier l'email via token
+ *     summary: "Vérifier l'email via token"
  *     tags:
  *       - Auth
  *     parameters:
