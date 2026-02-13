@@ -6,13 +6,123 @@ import { getAllUsers,  getUserById, updateUser, getMyProfile, updateMyProfile, d
 const router = express.Router();
 
 // Admin routes
+/**
+ * @openapi
+ * /api/users:
+ *   get:
+ *     summary: Récupérer tous les utilisateurs (admin)
+ *     tags:
+ *       - Users
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: Liste des utilisateurs
+ */
 router.get('/users', isAuthenticated, isAdmin, getAllUsers);
+
+/**
+ * @openapi
+ * /api/users/{id}:
+ *   get:
+ *     summary: Récupérer un utilisateur par id (admin)
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: Utilisateur trouvé
+ */
 router.get('/users/:id', isAuthenticated, isAdmin, getUserById);
+
+/**
+ * @openapi
+ * /api/users/{id}:
+ *   put:
+ *     summary: Mettre à jour un utilisateur (admin)
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: Utilisateur mis à jour
+ */
 router.put('/users/:id', isAuthenticated, isAdmin, updateUser);
+
+/**
+ * @openapi
+ * /api/users/{id}:
+ *   delete:
+ *     summary: Supprimer un utilisateur (admin)
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: Utilisateur supprimé
+ */
 router.delete('/users/:id', isAuthenticated, isAdmin, deleteUser);
 
 // User route
+/**
+ * @openapi
+ * /api/me:
+ *   get:
+ *     summary: Récupérer le profil de l'utilisateur authentifié
+ *     tags:
+ *       - Users
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       '200':
+ *         description: Profil utilisateur
+ */
 router.get('/me', isAuthenticated, getMyProfile);
+
+/**
+ * @openapi
+ * /api/me:
+ *   put:
+ *     summary: Mettre à jour le profil de l'utilisateur authentifié
+ *     tags:
+ *       - Users
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       '200':
+ *         description: Profil mis à jour
+ */
 router.put('/me', isAuthenticated, updateMyProfile);
 
 export default router;
