@@ -1,4 +1,5 @@
 import express from "express";
+import cors from 'cors';
 import router from "./routes/auth.route.js";
 import privateRoute from "./routes/private.route.js";
 import usersRoute from "./routes/user.route.js";
@@ -15,6 +16,12 @@ const __dirname = path.dirname(__filename);
 
 /* middlewares */
 app.use(express.json());
+/* CORS: autorise l'origine définie dans BASE_URL ou localhost:3000 */
+const corsOptions = {
+  origin: process.env.BASE_URL || 'http://localhost:3000',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 
 /* servir le front */
 app.use(express.static(path.join(__dirname, "public")));
