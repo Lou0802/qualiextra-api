@@ -101,7 +101,11 @@ function autoPathsSync() {
       // Convertir les paramètres Express `:id` en format OpenAPI `{id}`
       routePath = routePath.replace(/:([a-zA-Z0-9_]+)/g, '{$1}');
       if (!routePath.startsWith('/')) routePath = '/' + routePath;
-      const fullPath = (`/api${routePath}`).replace(/\/+/g, '/');
+
+      // Déduire un préfixe à partir du nom du fichier de route, p.ex. "auth.route.js" -> "/auth"
+      const routeFileBase = path.basename(file, '.js').replace(/\.route$/i, '');
+      const routePrefix = routeFileBase ? `/${routeFileBase}` : '';
+      const fullPath = (`/api${routePrefix}${routePath}`).replace(/\/+/g, '/');
 
       // Crée une opération minimale si elle n'existe pas déjà
       if (!paths[fullPath]) paths[fullPath] = {};
