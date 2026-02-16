@@ -1,10 +1,9 @@
-import Express from 'express';
+import express from 'express';
 import { isAuthenticated } from '../middlewares/auth.middleware.js';
 import { User } from '../models/user.model.js';
 
-const router = Express.Router();
+const router = express.Router();
 
-// Exemple de route privée protégée par le middleware d'authentification
 /**
  * @openapi
  * /api/private:
@@ -18,9 +17,9 @@ const router = Express.Router();
  *       '200':
  *         description: Message de bienvenue
  */
-router.get('/private', isAuthenticated, async (req, res) => {
-	const user = await User.findByPk(req.user.id);
-	res.json({ message: `Hello, ${user.firstname} !` });
+router.get('/', isAuthenticated, async (req, res) => {
+  const user = await User.findByPk(req.user.id);
+  res.json({ message: `Hello, ${user.firstname} !` });
 });
 
 export default router;

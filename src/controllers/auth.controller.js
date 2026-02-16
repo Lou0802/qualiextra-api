@@ -55,9 +55,14 @@ export const register = async (req, res) => {
 
     await sendVerificationEmail(user.email, emailVerificationToken);
 
-    // Réponse de succès
+    // [DEV] Log du token pour faciliter les tests (à retirer en production)
+    console.log(`[DEV] Token de vérification pour ${user.email}: ${emailVerificationToken}`);
+
+    // Réponse de succès (token inclus en dev pour faciliter les tests Swagger)
     return res.status(201).json({
       message: "Utilisateur enregistré avec succès. Veuillez vérifier votre email.",
+      // [DEV] À retirer en production :
+      emailVerificationToken: emailVerificationToken,
     });
 
   } catch (error) {

@@ -1,13 +1,13 @@
 import express from 'express';
 import { register, login, verifyEmail } from '../controllers/auth.controller.js';
 
-const router =express.Router();
+const router = express.Router();
 
 /**
  * @openapi
  * /api/auth/register:
  *   post:
- *     summary: "Enregistrer un nouvel utilisateur"
+ *     summary: Enregistrer un nouvel utilisateur
  *     tags:
  *       - Auth
  *     requestBody:
@@ -20,13 +20,13 @@ const router =express.Router();
  *       '201':
  *         description: Utilisateur créé
  */
-router.post ('/register', register);
+router.post('/register', register);
 
 /**
  * @openapi
  * /api/auth/login:
  *   post:
- *     summary: "Connexion utilisateur"
+ *     summary: Connexion utilisateur
  *     tags:
  *       - Auth
  *     requestBody:
@@ -46,13 +46,13 @@ router.post ('/register', register);
  *                 token:
  *                   type: string
  */
-router.post ('/login', login);
+router.post('/login', login);
 
 /**
  * @openapi
  * /api/auth/verify-email:
  *   get:
- *     summary: "Vérifier l'email via token"
+ *     summary: Vérifier l'email via token
  *     tags:
  *       - Auth
  *     parameters:
